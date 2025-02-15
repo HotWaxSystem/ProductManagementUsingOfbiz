@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Licensed to the Apache Software Foundation (ASF) under one
+or more contributor license agreements.  See the NOTICE file
+distributed with this work for additional information
+regarding copyright ownership.  The ASF licenses this file
+to you under the Apache License, Version 2.0 (the
+"License"); you may not use this file except in compliance
+with the License.  You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing,
+software distributed under the License is distributed on an
+"AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+KIND, either express or implied.  See the License for the
+specific language governing permissions and limitations
+under the License.
+-->
+
+<entitymodel xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="https://ofbiz.apache.org/dtds/entitymodel.xsd">
+    <!-- ========================================================= -->
+    <!-- ======================== Defaults ======================= -->
+    <!-- ========================================================= -->
+    <title>Entity of ProductManagement Component</title>
+    <description>None</description>
+    <copyright></copyright>
+    <version>1.0</version>
+
+    <view-entity entity-name="FindProductView"
+        package-name="com.ofbiz.productview"
+        title="Product View Entity">
+        
+        <!-- Base Entities -->
+        <member-entity entity-alias="P" entity-name="Product"/>
+        <member-entity entity-alias="PC" entity-name="ProductCategory"/>
+        <member-entity entity-alias="PCM" entity-name="ProductCategoryMember"/>
+        <member-entity entity-alias="PP" entity-name="ProductPrice"/>
+        <member-entity entity-alias="PF" entity-name="ProductFeature"/>
+        <member-entity entity-alias="PFA" entity-name="ProductFeatureAppl"/>
+        
+        <!-- Alias Fields -->
+        <alias-all entity-alias="P"/>
+        <alias-all entity-alias="PC"/>
+        <alias-all entity-alias="PCM">
+            <exclude field="description"/>
+        </alias-all>
+        <alias name="categoryMembershipDescription" entity-alias="PCM" field="description"/>
+        <alias name="productPrice" entity-alias="PP" field="price"/>
+        <alias name="productFeatureDescription" entity-alias="PF" field="description"/>
+        
+        <!-- View Links (Joining Tables) -->
+        <view-link entity-alias="P" rel-entity-alias="PCM">
+            <key-map field-name="productId"/>
+        </view-link>
+
+        <view-link entity-alias="PCM" rel-entity-alias="PC">
+            <key-map field-name="productCategoryId"/>
+        </view-link>
+
+        <view-link entity-alias="P" rel-entity-alias="PP">
+            <key-map field-name="productId"/>
+        </view-link>
+
+        <view-link entity-alias="P" rel-entity-alias="PFA">
+            <key-map field-name="productId"/>
+        </view-link>
+
+        <view-link entity-alias="PFA" rel-entity-alias="PF">
+            <key-map field-name="productFeatureId"/>
+        </view-link>
+
+        <relation type="one-nofk" rel-entity-name="Product">
+            <key-map field-name="productId"/>
+        </relation>
+
+        <relation type="one-nofk" rel-entity-name="ProductCategoryMember">
+            <key-map field-name="productId"/>
+            <key-map field-name="productCategoryId"/>
+        </relation>
+        <relation type="one-nofk" rel-entity-name="ProductFeatureAppl">
+            <key-map field-name="productId"/>
+            <key-map field-name="productFeatureId"/>
+        </relation>
+    </view-entity>
+
+</entitymodel>
