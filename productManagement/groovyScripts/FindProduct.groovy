@@ -21,7 +21,7 @@ def FindproductDetail() {
     List productlist = []
     
     try {
-        def query = EntityQuery.use(delegator).from("ProductAndCategoryViewEntity")
+        def query = EntityQuery.use(delegator).from("FindProductView")
 
         if (productName) {
             query = query.where("productName", productName)

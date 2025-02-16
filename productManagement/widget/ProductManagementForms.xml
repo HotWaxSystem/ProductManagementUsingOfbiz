@@ -21,7 +21,7 @@ under the License.
 <forms xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xmlns="http://ofbiz.apache.org/Widget-Form" xsi:schemaLocation="http://ofbiz.apache.org/Widget-Form http://ofbiz.apache.org/dtds/widget-form.xsd">
 
-        <form name="AddOfbizDemo" type="single" target="createOfbizDemoEvent">
+        <!-- <form name="AddOfbizDemo" type="single" target="productEvent">
                 <field name="productId"><text/></field>
                 <field name="ProductCategory"><text/></field>
                 <field name="ProductPrice"><text/></field>
@@ -29,5 +29,17 @@ under the License.
                 <field name="submitButton" title="${uiLabelMap.CommonAdd}">
                         <submit button-type="button" />
                 </field>
+        </form> -->
+
+        <form name="AddNewProduct" type="single" target="createProductEvent">
+                <auto-fields-service service-name="createProduct"/>
+                <field name="productName" title="Product Name"/>
+                <field name="productCategoryId" title="Product Category ID"/>
+                <field name="price" title="Product Price"/>
+                <field name="submitButton" title="${uiLabelMap.CommonAdd}"><submit button-type="button"/></field>
+        </form>
+        <form name="UpdateNewProduct" type="single" target="productUpdateEvent">
+                <auto-fields-service service-name="UpdateProduct"/>
+                <field name="submitButton" title="${uiLabelMap.CommonAdd}"><submit button-type="button"/></field>
         </form>
 </forms>

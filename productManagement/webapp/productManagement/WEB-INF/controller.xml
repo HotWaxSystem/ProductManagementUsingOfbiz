@@ -42,7 +42,20 @@ under the License.
         <security https="true" auth="true" />
         <event type="service" invoke="fetchProductListByGroovy"/>
         <response name="success" type="view" value="screenrender" />
-        
+    </request-map>
+
+     <request-map uri="createProductEvent">
+        <security https="true" auth="true"/>
+        <event type="java" path="com.ofbiz.events.OfbizDemoEvents" invoke="createProductEvent"/>
+        <response name="success" type="view" value="main"/>
+        <response name="error" type="view" value="main"/>
+    </request-map>
+
+    <request-map uri="productUpdateEvent">
+        <security https="true" auth="true"/>
+        <event type="java" path="com.ofbiz.events.ProductEvents" invoke="productUpdateEvent"/>
+        <response name="success" type="view" value="main"/>
+        <response name="error" type="view" value="main"/>
     </request-map>
     <!-- Request Mappings -->
     <request-map uri="main"><security https="true" auth="true"/><response name="success" type="view" value="main"/></request-map>
@@ -51,4 +64,5 @@ under the License.
     <view-map name="main" type="screen" page="component://productManagement/widget/ProductManagementScreens.xml#main"/>
     <view-map name="screenrender" type="screen"
         page="component://productManagement/widget/ProductManagementScreens.xml#Datascreen" />
+    <!-- <view-map name="infoScreen" type="screen" page="component://productManagement/widget/ProductManagementScreens.xml#infoScreen"></view-map> -->
 </site-conf>

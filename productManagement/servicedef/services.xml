@@ -39,6 +39,8 @@ under the License.
           <attribute name="price" type="BigDecimal" mode="IN" />
 
           <attribute name="productId" type="String" mode="OUT" />
+          <attribute name="successMessage" type="String" mode="OUT" optional="true"/>
+        <attribute name="errorMessage" type="String" mode="OUT" optional="true"/>
     </service>
 
     <!-- service for update  -->
@@ -52,6 +54,8 @@ under the License.
         <attribute name="productFeatureoldId" type="String" mode="IN" optional="true"/>
         <attribute name="ProductFeatureNewId" type="String" mode="IN" optional="true" />
         <attribute name="productFeatureApplTypeId" type="String" mode="IN" optional="true" />
+        <attribute name="successMessage" type="String" mode="OUT" optional="true"/>
+        <attribute name="errorMessage" type="String" mode="OUT" optional="true"/>
     </service>
 
 

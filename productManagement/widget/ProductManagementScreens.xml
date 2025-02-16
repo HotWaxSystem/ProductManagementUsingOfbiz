@@ -21,7 +21,7 @@ under the License.
 <screens xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xmlns="http://ofbiz.apache.org/Widget-Screen" xsi:schemaLocation="http://ofbiz.apache.org/Widget-Screen http://ofbiz.apache.org/dtds/widget-screen.xsd">
 
-     <screen name="main">
+     <!-- <screen name="main">
         <section>
             <actions>
                 <set field="headerItem" value="main"/>
@@ -29,7 +29,7 @@ under the License.
             <widgets>
                 <decorator-screen name="ProductManagementCommonDecorator" location="${parameters.mainDecoratorLocation}">
                     <decorator-section name="body">
-                     <screenlet title="Add Ofbiz Demo">
+                     <screenlet title="Find Products">
                         <platform-specific>
                             <html><html-template location="component://productManagement/webapp/productManagement/crud/FindForm.ftl"/></html>
                         </platform-specific>
@@ -38,8 +38,27 @@ under the License.
                 </decorator-screen>
             </widgets>
         </section>
-    </screen>
+    </screen> -->
 
+    <screen name="main">
+        <section>
+            <actions>
+                <set field="headerItem" value="main"/><!-- this highlights the selected menu-item with name "main" -->
+            </actions>
+            <widgets>
+                <decorator-screen name="ProductManagementCommonDecorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                        <screenlet title="Add New Product">
+                            <include-form name="AddNewProduct" location="component://productManagement/widget/ProductManagementForms.xml"/>
+                        </screenlet>
+                        <screenlet title="Update New Product">
+                            <include-form name="UpdateNewProduct" location="component://productManagement/widget/ProductManagementForms.xml"/>
+                        </screenlet>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
     <screen name="Datascreen">
         <section>
             <widgets>
